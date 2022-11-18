@@ -6,6 +6,10 @@
 /* Navbar */
 @import url(../components/Navbar/Navbar.css);
 
+/* Post form */
+
+@import url(../components/AddPostForm/AddPostForm.css);
+
 /* Posts list */
 
 @import url(../components/PostsLIst/PostsList.css);
