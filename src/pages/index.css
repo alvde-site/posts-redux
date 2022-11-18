@@ -2,36 +2,25 @@
 @import url(../vendor/fonts/inter.css);
 @import url(../components/App/App.css);
 
-/* signup & signin */
-@import url(../components/App/Register/Register.css);
 
-/* header */
-@import url(../components/App/Header/Header.css);
-@import url(../components/App/Header/AuthLinks/AuthLinks.css);
-@import url(../components/App/Header/NavLinks/NavLinks.css);
+/* Navbar */
+@import url(../components/Navbar/Navbar.css);
 
-/* main */
-@import url(../components/App/Main/Promo/Promo.css);
-@import url(../components/App/Main/AboutProject/AboutProject.css);
-@import url(../components/App/Main/Techs/Techs.css);
-@import url(../components/App/Main/AboutMe/AboutMe.css);
-@import url(../components/App/Main/Portfolio/Portfolio.css);
+/* Posts list */
 
-/* movies */
-@import url(../components/App/Movies/SearchForm/SearchForm.css);
-@import url(../components/App/Movies/SearchForm/FilterCheckbox/FilterCheckbox.css);
-@import url(../components/App/MoviesCardList/MoviesCardList.css);
-@import url(../components/App/MoviesCardList/NotFoundMovies/NotFoundMovies.css);
-@import url(../components/App/MoviesCard/MoviesCard.css);
+@import url(../components/PostsLIst/PostsList.css);
 
-/* profile */
-@import url(../components/App/Profile/Profile.css);
+/* Notifications list */
 
-/* footer */
-@import url(../components/App/Footer/Footer.css);
+.notification {
+  border: 1px solid #eee;
+  padding: 0.5rem;
+}
 
-/* Старница не найдена */
-@import url(../components/App/PageNotFound/PageNotFound.css);
+.notificationsList .notification + .notification {
+  border-top: none;
+}
 
-/* Окно навигации */
-@import url(../components/App/Navigation/Navigation.css);
+.notification.new {
+  background-color: rgba(29, 161, 242, 0.1);
+}
