@@ -6,14 +6,14 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Navbar } from "./app/Navbar";
-import { PostsList } from "./features/posts/PostsList";
+import { Navbar } from "../Navbar/Navbar";
+import { PostsList } from "../PostsLIst/PostsList";
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <div className="App">
+      <div className="page">
         <Switch>
           <Route
             exact
