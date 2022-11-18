@@ -11,7 +11,7 @@ export const PostsList = () => {
     ))
 
     return <section className="posts">
-        <h2>Комментарии</h2>
+        <h2>Отзывы</h2>
         {renderedPosts}
     </section>
 }
