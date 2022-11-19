@@ -1,8 +1,29 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
+
+import { postAdded } from "../../services/reducers/postsSlice";
 
 export const AddPostForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  const dispatch = useDispatch();
+
+  const onSavePostClick = () => {
+    if (title && content) {
+      dispatch(
+        postAdded({
+          id: nanoid(),
+          title,
+          content,
+        })
+      );
+    }
+
+    setTitle("");
+    setContent("");
+  };
 
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onContentChanged = (e) => setContent(e.target.value);
@@ -32,7 +53,7 @@ export const AddPostForm = () => {
           onChange={onContentChanged}
           className="postform__item"
         />
-        <button type="button" className="postform__button">
+        <button type="button" className="postform__button" onClick={onSavePostClick}>
           Сохранить отзыв
         </button>
       </form>
