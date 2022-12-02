@@ -16,7 +16,7 @@ export const PostsList = () => {
 
     return <section className="posts">
         <h2 className="posts__title">Отзывы</h2>
-        {renderedPosts}
+        {renderedPosts.reverse()}
     </section>
 }
 

@@ -13,7 +13,7 @@ export const AddPostForm = () => {
   const users = useSelector(state => state.users);
 
   const onSavePostClick = () => {
-    if (title && content) {
+    if (title && content && userId) {
       dispatch(postAdded(title, content, userId));
     }
 
