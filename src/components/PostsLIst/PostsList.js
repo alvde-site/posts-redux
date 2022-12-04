@@ -9,7 +9,7 @@ export const PostsList = () => {
         <article className="posts__excerpt" key={post.id}>
             <h3>{post.title}</h3>
             <p className="posts__content">{post.content.substring(0,100)}</p>
-            <PostAuthor userId={post.user} timestamp={post.date}/>
+            <PostAuthor userId={post.user} timestamp={post.date} dateTitle={post.dateTitle}/>
             <Link to={`/posts/${post.id}`}>читать весь отзыв</Link>
             {console.log(post.date)}
         </article>

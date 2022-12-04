@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { TimeAgo } from "../TimeAgo/TimeAgo";
 
-export const PostAuthor = ({ userId, timestamp }) => {
+export const PostAuthor = ({ userId, timestamp, dateTitle }) => {
   const author = useSelector((state) =>
     state.users.find((user) => user.id === userId)
   );
@@ -9,7 +9,7 @@ export const PostAuthor = ({ userId, timestamp }) => {
   return (
     <p>
       {author ? author.name : "Неизвестный автор"}
-      <TimeAgo timestamp={timestamp}></TimeAgo>
+      <TimeAgo timestamp={timestamp} dateTitle={dateTitle}></TimeAgo>
     </p>
   );
 };

@@ -1,7 +1,7 @@
 import { parseISO, formatDistanceToNow } from "date-fns";
 import { translatedTime } from "../../utils/translateTimestamp";
 
-export const TimeAgo = ({ timestamp }) => {
+export const TimeAgo = ({ timestamp, dateTitle }) => {
   let timeAgo = "";
   if (timestamp && timestamp !== "") {
     const date = parseISO(timestamp);
@@ -10,7 +10,7 @@ export const TimeAgo = ({ timestamp }) => {
   }
 
   return (
-    <span>
+    <span title={dateTitle}>
       &nbsp; <i>{timeAgo}</i>
     </span>
   );
