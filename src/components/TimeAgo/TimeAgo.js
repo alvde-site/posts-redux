@@ -1,26 +1,5 @@
 import { parseISO, formatDistanceToNow } from "date-fns";
-
-const translatedTime = (time) => {
-  let res;
-  if (time.includes("less")) {
-    res = time.replace("less than a minute", "Меньше одной минуты");
-  } else if (time.includes("1 day")) {
-    res = time.replace("day", "день");
-  } else if (
-    time.includes("2 minutes") ||
-    time.includes("3 minutes") ||
-    time.includes("4 minutes")
-  ) {
-    res = time.replace("minutes", "минуты");
-  } else if (time.includes("minutes")) {
-    res = time.replace("minutes", "минут");
-  } else if (time.includes("minute")) {
-    res = time.replace("minute", "минуту");
-  } else {
-    res = time;
-  }
-  return res;
-};
+import { translatedTime } from "../../utils/translateTimestamp";
 
 export const TimeAgo = ({ timestamp }) => {
   let timeAgo = "";
