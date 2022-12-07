@@ -9,35 +9,25 @@ const initialReactions = {
   eyes: 0,
 };
 
-const initialState = [
-  {
-    id: "1",
-    title: "Первый отзыв",
-    content: "Привет!",
-    reactions: initialReactions,
-  },
-  {
-    id: "2",
-    title: "Второй отзыв",
-    content: "Еще текст",
-    reactions: initialReactions,
-  },
-];
-
+const initialState = {
+  posts: [],
+  status: 'idle',
+  error: null
+}
 const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {
     reactionAdded(state, action) {
       const { postId, reaction } = action.payload;
-      const existingPost = state.find((post) => post.id === postId);
+      const existingPost = state.posts.find((post) => post.id === postId);
       if (existingPost) {
         existingPost.reactions[reaction]++;
       }
     },
     postAdded: {
       reducer(state, action) {
-        state.push(action.payload);
+        state.posts.push(action.payload);
       },
       prepare(title, content, userId) {
         return {
@@ -55,7 +45,7 @@ const postsSlice = createSlice({
     },
     postUpdated(state, action) {
       const { id, title, content } = action.payload;
-      const existingPost = state.find((post) => post.id === id);
+      const existingPost = state.posts.find((post) => post.id === id);
       if (existingPost) {
         existingPost.title = title;
         existingPost.content = content;
@@ -68,7 +58,7 @@ export const { postAdded, postUpdated, reactionAdded } = postsSlice.actions;
 
 export default postsSlice.reducer;
 
-export const selectAllPosts = state => state.posts
+export const selectAllPosts = state => state.posts.posts
 
 export const selectPostById = (state, postId) =>
-  state.posts.find(post => post.id === postId)
+  state.posts.posts.find(post => post.id === postId)
