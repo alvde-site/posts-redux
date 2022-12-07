@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
-import { fakePosts } from "../../api/fakePosts";
+// import { fakePosts } from "../../api/fakePosts";
 
 const initialReactions = {
   thumbsUp: 0,
@@ -12,11 +12,25 @@ const initialReactions = {
 
 const initialState = {
   posts: [],
-  status: 'idle',
-  error: null
-}
+  status: "idle",
+  error: null,
+};
 
-export const fetchPosts = createAsyncThunk('posts/fetchPosts', fakePosts.getInitialMovies())
+// export const fetchPosts = createAsyncThunk(
+//   "posts/fetchPosts",
+//   fakePosts.getInitialMovies()
+// );
+
+export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
+  const response = await fetch("https://api.nomoreparties.co/beatfilm-movies", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Ошибка ${res.status}`);
+  });
+  return response;
+});
 
 const postsSlice = createSlice({
   name: "posts",
@@ -62,7 +76,7 @@ export const { postAdded, postUpdated, reactionAdded } = postsSlice.actions;
 
 export default postsSlice.reducer;
 
-export const selectAllPosts = state => state.posts.posts
+export const selectAllPosts = (state) => state.posts.posts;
 
 export const selectPostById = (state, postId) =>
-  state.posts.posts.find(post => post.id === postId)
+  state.posts.posts.find((post) => post.id === postId);
