@@ -15,7 +15,7 @@ class PostsApi {
   }
 }
 
-export const PostsApiHandler = new PostsApi({
+export const fakePosts = new PostsApi({
   baseUrl: "https://api.nomoreparties.co/beatfilm-movies",
   headers: {
     "Content-Type": "application/json",

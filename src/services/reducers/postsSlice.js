@@ -1,4 +1,5 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
+import { fakePosts } from "../../api/fakePosts";
 
 const initialReactions = {
   thumbsUp: 0,
@@ -14,6 +15,9 @@ const initialState = {
   status: 'idle',
   error: null
 }
+
+export const fetchPosts = createAsyncThunk('posts/fetchPosts', fakePosts.getInitialMovies())
+
 const postsSlice = createSlice({
   name: "posts",
   initialState,
