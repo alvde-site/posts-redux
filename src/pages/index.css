@@ -6,13 +6,15 @@
 /* Navbar */
 @import url(../components/Navbar/Navbar.css);
 
-/* Post form */
+/* Forms */
 
 @import url(../components/AddPostForm/AddPostForm.css);
+@import url(../components/EditPostForm/EditPostForm.css);
 
 /* Posts list */
 
 @import url(../components/PostsLIst/PostsList.css);
+@import url(../components/SinglePostPage/SinglePostPage.css);
 
 /* Notifications list */
 

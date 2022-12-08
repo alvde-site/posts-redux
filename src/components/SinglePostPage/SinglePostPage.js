@@ -19,10 +19,17 @@ export const SinglePostPage = ({ match }) => {
   return (
     <section>
       <article className="post">
-        <h2>{post.nameRU}</h2>
-        <p className="post-content">{post.description}</p>
         <PostAuthor userId={post.user} />
-        <Link to={`/editPost/${post.id}`}>Редактировать отзыв</Link>
+        <h2>{post.nameRU}</h2>
+        <p className="post__content">{post.description}</p>
+        <div className="post__links">
+          <Link className="post__link" to={`/editPost/${post.id}`}>
+            Редактировать отзыв
+          </Link>
+          <Link className="post__link" to="/">
+            К остальным отзывам
+          </Link>
+        </div>
       </article>
     </section>
   );
