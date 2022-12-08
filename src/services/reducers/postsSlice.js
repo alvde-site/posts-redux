@@ -33,14 +33,14 @@ const postsSlice = createSlice({
       reducer(state, action) {
         state.posts.push(action.payload);
       },
-      prepare(description, content, userId) {
+      prepare(description, nameRU, userId) {
         return {
           payload: {
             id: nanoid(),
             date: new Date().toISOString(),
             dateTitle: new Date().toString(),
             description,
-            content,
+            nameRU,
             user: userId,
             reactions: initialReactions,
           },
@@ -65,8 +65,6 @@ const postsSlice = createSlice({
         state.status = "succeeded";
         const formattedPost = action.payload.map(post => {return {...post, reactions: initialReactions}} )
         state.posts = state.posts.concat(formattedPost);
-        // localStorage.setItem("initialPosts", JSON.stringify(formattedPost))
-        // state.posts = state.posts.concat(JSON.parse(localStorage.getItem("initialPosts")));
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = "failed";

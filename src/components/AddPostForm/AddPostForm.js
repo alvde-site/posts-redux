@@ -5,7 +5,7 @@ import { postAdded } from "../../services/reducers/postsSlice";
 
 export const AddPostForm = () => {
   const [description, setDescription] = useState("");
-  const [content, setContent] = useState("");
+  const [nameRU, setNameRU] = useState("");
   const [userId, setUserId] = useState("");
 
   const dispatch = useDispatch();
@@ -13,20 +13,20 @@ export const AddPostForm = () => {
   const users = useSelector(state => state.users);
 
   const onSavePostClick = () => {
-    if (description && content && userId) {
-      dispatch(postAdded(description, content, userId));
+    if (description && nameRU && userId) {
+      dispatch(postAdded(description, nameRU, userId));
     }
 
     setDescription("");
-    setContent("");
+    setNameRU("");
     setUserId("");
   };
 
-  const onTitleChanged = (e) => setDescription(e.target.value);
-  const onContentChanged = (e) => setContent(e.target.value);
+  const onTitleChanged = (e) => setNameRU(e.target.value);
+  const onContentChanged = (e) => setDescription(e.target.value);
   const onAuthorChanged = (e) => setUserId(e.target.value);
 
-  const canSave = Boolean(description) && Boolean(content) && Boolean(userId);
+  const canSave = Boolean(description) && Boolean(nameRU) && Boolean(userId);
 
   const usersOptions = users.map(user => (
     <option key={user.id} value={user.id}>
@@ -45,7 +45,7 @@ export const AddPostForm = () => {
           type="text"
           id="postTitle"
           name="postTitle"
-          value={description}
+          value={nameRU}
           onChange={onTitleChanged}
           className="postform__item"
         />
@@ -60,7 +60,7 @@ export const AddPostForm = () => {
         <textarea
           id="postContent"
           name="postContent"
-          value={content}
+          value={description}
           onChange={onContentChanged}
           className="postform__item"
         />
