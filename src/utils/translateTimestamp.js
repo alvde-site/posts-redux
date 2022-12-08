@@ -12,7 +12,10 @@ import {
   MINUTESRU,
   MINUTESFROMFIVERU,
   MINUTE,
-  MINUTERU
+  MINUTERU,
+  ALMOST_TWO_YEARS,
+  ALMOST_TWO_YEARS_RU,
+  ABOUT_TWO_YEARS
 } from "./constants";
 
 export const translatedTime = (time) => {
@@ -31,7 +34,11 @@ export const translatedTime = (time) => {
     res = time.replace(MINUTES, MINUTESFROMFIVERU);
   } else if (time.includes(MINUTE)) {
     res = time.replace(MINUTE, MINUTERU);
-  } else {
+  } else if(time.includes(ALMOST_TWO_YEARS || ABOUT_TWO_YEARS)){
+    res = time.replace(ALMOST_TWO_YEARS, ALMOST_TWO_YEARS_RU);
+  } else if(time.includes(ABOUT_TWO_YEARS)){
+    res = time.replace(ABOUT_TWO_YEARS, ALMOST_TWO_YEARS_RU);
+  }else {
     res = time;
   }
   return res;

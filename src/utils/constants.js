@@ -14,6 +14,9 @@ export const MINUTESRU = "минуты";
 export const MINUTESFROMFIVERU = "минут";
 export const MINUTE = "minute";
 export const MINUTERU = "минуту";
+export const ALMOST_TWO_YEARS = "almost 2 years";
+export const ABOUT_TWO_YEARS = "about 2 years";
+export const ALMOST_TWO_YEARS_RU = "около 2 лет";
 export const initialReactions = {
     thumbsUp: 0,
     thumbsDown: 0,
