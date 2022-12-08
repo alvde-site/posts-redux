@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postAdded } from "../../services/reducers/postsSlice";
 
 export const AddPostForm = () => {
-  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const [userId, setUserId] = useState("");
 
@@ -13,20 +13,20 @@ export const AddPostForm = () => {
   const users = useSelector(state => state.users);
 
   const onSavePostClick = () => {
-    if (title && content && userId) {
-      dispatch(postAdded(title, content, userId));
+    if (description && content && userId) {
+      dispatch(postAdded(description, content, userId));
     }
 
-    setTitle("");
+    setDescription("");
     setContent("");
     setUserId("");
   };
 
-  const onTitleChanged = (e) => setTitle(e.target.value);
+  const onTitleChanged = (e) => setDescription(e.target.value);
   const onContentChanged = (e) => setContent(e.target.value);
   const onAuthorChanged = (e) => setUserId(e.target.value);
 
-  const canSave = Boolean(title) && Boolean(content) && Boolean(userId);
+  const canSave = Boolean(description) && Boolean(content) && Boolean(userId);
 
   const usersOptions = users.map(user => (
     <option key={user.id} value={user.id}>
@@ -45,7 +45,7 @@ export const AddPostForm = () => {
           type="text"
           id="postTitle"
           name="postTitle"
-          value={title}
+          value={description}
           onChange={onTitleChanged}
           className="postform__item"
         />
