@@ -8,11 +8,14 @@ import { ReactonButtons } from "../ReactionButtons/ReactionButtons";
 export const PostsList = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectAllPosts);
-//   const postStatus = useSelector((state) => state.posts);
+  const postStatus = useSelector((state) => state.posts.status);
+  console.log(postStatus)
 
   useEffect(() => {
-    dispatch(fetchPosts());
-  }, [dispatch]);
+    if(postStatus === "idle") {
+      dispatch(fetchPosts());
+    } 
+  }, [postStatus, dispatch]);
 
   const renderedPosts = posts.map((post) => (
     <article className="posts__excerpt" key={post.id}>

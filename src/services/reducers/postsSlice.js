@@ -65,6 +65,8 @@ const postsSlice = createSlice({
         state.status = "succeeded";
         const formattedPost = action.payload.map(post => {return {...post, reactions: initialReactions}} )
         state.posts = state.posts.concat(formattedPost);
+        // localStorage.setItem("initialPosts", JSON.stringify(formattedPost))
+        // state.posts = state.posts.concat(JSON.parse(localStorage.getItem("initialPosts")));
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = "failed";
