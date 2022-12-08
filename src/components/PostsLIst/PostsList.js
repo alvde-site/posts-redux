@@ -42,6 +42,7 @@ export const PostsList = () => {
     content = <Spinner text="Загрузка..." />;
   } else if (postStatus === "succeeded") {
     content = posts.map((post) => <PostExcerpt key={post.id} post={post} />);
+    content.reverse();
   } else if (postStatus === "failed") {
     content = <div>{error}</div>;
   }
@@ -49,7 +50,7 @@ export const PostsList = () => {
   return (
     <section className="posts">
       <h2 className="posts__title">Отзывы</h2>
-      {content.reverse()}
+      {content}
     </section>
   );
 };
