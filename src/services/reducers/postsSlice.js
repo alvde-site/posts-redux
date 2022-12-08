@@ -1,14 +1,5 @@
 import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
-// import { fakePosts } from "../../api/fakePosts";
-
-const initialReactions = {
-  thumbsUp: 0,
-  thumbsDown: 0,
-  hooray: 0,
-  heart: 0,
-  rocket: 0,
-  eyes: 0,
-};
+import { initialReactions } from "../../utils/constants";
 
 const initialState = {
   posts: [],

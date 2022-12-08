@@ -14,3 +14,11 @@ export const MINUTESRU = "минуты";
 export const MINUTESFROMFIVERU = "минут";
 export const MINUTE = "minute";
 export const MINUTERU = "минуту";
+export const initialReactions = {
+    thumbsUp: 0,
+    thumbsDown: 0,
+    hooray: 0,
+    heart: 0,
+    rocket: 0,
+    eyes: 0,
+  };
