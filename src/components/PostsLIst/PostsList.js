@@ -17,10 +17,10 @@ export const PostsList = () => {
   const renderedPosts = posts.map((post) => (
     <article className="posts__excerpt" key={post.id}>
       <h3>{post.nameRU}</h3>
-      <p className="posts__content">{post.description.substring(0, 100)}</p>
+      <p className="posts__content">{post.description}</p>
       <PostAuthor
         userId={post.user}
-        timestamp={post.date}
+        timestamp={post.created_at}
         dateTitle={post.dateTitle}
       />
       <Link to={`/posts/${post.id}`}>читать весь отзыв</Link>

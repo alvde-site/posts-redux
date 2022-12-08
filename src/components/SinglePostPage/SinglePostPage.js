@@ -7,7 +7,12 @@ import { PostAuthor } from "../PostAuthor/PostAuthor";
 export const SinglePostPage = ({ match }) => {
   const { postId } = match.params;
 
-  const post = useSelector((state) => selectPostById(state, postId));
+  const post = useSelector((state) => selectPostById(state, parseInt(postId)));
+
+  const test = useSelector((state) =>
+    state.posts.posts.find((post) => post.id === parseInt(postId))
+  );
+  console.log(test);
 
   if (!post) {
     return (
@@ -20,8 +25,8 @@ export const SinglePostPage = ({ match }) => {
   return (
     <section>
       <article className="post">
-        <h2>{post.title}</h2>
-        <p className="post-content">{post.content}</p>
+        <h2>{post.nameRU}</h2>
+        <p className="post-content">{post.description}</p>
         <PostAuthor userId={post.user} />
         <Link to={`/editPost/${post.id}`}>Редактировать отзыв</Link>
       </article>

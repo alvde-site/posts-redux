@@ -13,3 +13,9 @@
   margin-top: 0.5rem;
   background-color: #f9f9f9;
 }
+
+.posts__content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
