@@ -6,8 +6,7 @@ import { PostAuthor } from "../PostAuthor/PostAuthor";
 
 export const SinglePostPage = ({ match }) => {
   const { postId } = match.params;
-
-  const post = useSelector((state) => selectPostById(state, parseInt(postId)));
+  const post = useSelector((state) => selectPostById(state, postId));
 
   if (!post) {
     return (

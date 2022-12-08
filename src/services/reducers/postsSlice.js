@@ -49,7 +49,7 @@ const postsSlice = createSlice({
     },
     postUpdated(state, action) {
       const { id, nameRU, description } = action.payload;
-      const existingPost = state.posts.find((post) => post.id === id);
+      const existingPost = state.posts.find((post) => post.id.toString() === id.toString());
       if (existingPost) {
         existingPost.nameRU = nameRU;
         existingPost.description = description;
@@ -80,4 +80,4 @@ export default postsSlice.reducer;
 export const selectAllPosts = (state) => state.posts.posts;
 
 export const selectPostById = (state, postId) =>
-  state.posts.posts.find((post) => post.id === postId);
+  state.posts.posts.find((post) => post.id.toString() === postId.toString());

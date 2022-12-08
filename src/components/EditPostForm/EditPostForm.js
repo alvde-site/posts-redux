@@ -9,7 +9,7 @@ import {
 
 export const EditPostForm = ({ match }) => {
   const { postId } = match.params;
-  const post = useSelector((state) => selectPostById(state, parseInt(postId)));
+  const post = useSelector((state) => selectPostById(state, postId));
   const [nameRU, setNameRU] = useState(post.nameRU);
   const [description, setDescription] = useState(post.description);
 
@@ -21,7 +21,7 @@ export const EditPostForm = ({ match }) => {
 
   const onSavePostClick = () => {
     if (nameRU && description) {
-      dispatch(postUpdated({ id: parseInt(postId), nameRU, description }));
+      dispatch(postUpdated({ id: postId, nameRU, description }));
       history.push(`/posts/${postId}`);
     }
   };
