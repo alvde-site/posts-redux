@@ -6,19 +6,20 @@ import { postUpdated, selectPostById } from "../../services/reducers/postsSlice"
 
 export const EditPostForm = ({ match }) => {
   const {postId} = match.params;
-  const post = useSelector(state => selectPostById(state, postId))
-  const [title, setTitle] = useState(post.title);
-  const [content, setContent] = useState(post.content);
+  const post = useSelector(state => selectPostById(state, parseInt(postId)))
+  console.log(post)
+  const [nameRU, setNameRU] = useState(post.nameRU);
+  const [description, setDescription] = useState(post.description);
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const onTitleChanged = (e) => setTitle(e.target.value);
-  const onContentChanged = (e) => setContent(e.target.value);
+  const onTitleChanged = (e) => setNameRU(e.target.value);
+  const onContentChanged = (e) => setDescription(e.target.value);
 
   const onSavePostClick = () => {
-    if (title && content) {
-      dispatch(postUpdated({ id: postId, title, content }));
+    if (nameRU && description) {
+      dispatch(postUpdated({ id: parseInt(postId), nameRU, description }));
       history.push(`/posts/${postId}`);
     }
   };
@@ -34,7 +35,7 @@ export const EditPostForm = ({ match }) => {
           type="text"
           id="postTitle"
           name="postTitle"
-          value={title}
+          value={nameRU}
           onChange={onTitleChanged}
           className="postform__item"
         />
@@ -44,7 +45,7 @@ export const EditPostForm = ({ match }) => {
         <textarea
           id="postContent"
           name="postContent"
-          value={content}
+          value={description}
           onChange={onContentChanged}
           className="postform__item"
         />
