@@ -4,19 +4,10 @@ import { Link } from "react-router-dom";
 import { fetchPosts, selectAllPosts } from "../../services/reducers/postsSlice";
 import { PostAuthor } from "../PostAuthor/PostAuthor";
 import { ReactonButtons } from "../ReactionButtons/ReactionButtons";
+import { Spinner } from "../Spinner/Spinner";
 
-export const PostsList = () => {
-  const dispatch = useDispatch();
-  const posts = useSelector(selectAllPosts);
-  const postStatus = useSelector((state) => state.posts.status);
-
-  useEffect(() => {
-    if(postStatus === "idle") {
-      dispatch(fetchPosts());
-    } 
-  }, [postStatus, dispatch]);
-
-  const renderedPosts = posts.map((post) => (
+const PostExcerpt = ({ post }) => {
+  return (
     <article className="posts__excerpt" key={post.id}>
       <h3>{post.nameRU}</h3>
       <p className="posts__content">{post.description}</p>
@@ -25,15 +16,40 @@ export const PostsList = () => {
         timestamp={post.created_at}
         dateTitle={post.dateTitle}
       />
-      <Link className="posts__morelink" to={`/posts/${post.id}`}>читать весь отзыв</Link>
+      <Link className="posts__morelink" to={`/posts/${post.id}`}>
+        читать весь отзыв
+      </Link>
       <ReactonButtons post={post} />
     </article>
-  ));
+  );
+};
+
+export const PostsList = () => {
+  const dispatch = useDispatch();
+  const posts = useSelector(selectAllPosts);
+
+  const postStatus = useSelector((state) => state.posts.status);
+  const error = useSelector((state) => state.posts.error);
+  useEffect(() => {
+    if (postStatus === "idle") {
+      dispatch(fetchPosts());
+    }
+  }, [postStatus, dispatch]);
+
+  let content;
+
+  if (postStatus === "loading") {
+    content = <Spinner text="Загрузка..." />;
+  } else if (postStatus === "succeeded") {
+    content = posts.map((post) => <PostExcerpt key={post.id} post={post} />);
+  } else if (postStatus === "failed") {
+    content = <div>{error}</div>;
+  }
 
   return (
     <section className="posts">
       <h2 className="posts__title">Отзывы</h2>
-      {renderedPosts.reverse()}
+      {content}
     </section>
   );
 };
