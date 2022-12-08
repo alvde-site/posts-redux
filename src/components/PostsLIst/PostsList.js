@@ -25,7 +25,7 @@ export const PostsList = () => {
         timestamp={post.created_at}
         dateTitle={post.dateTitle}
       />
-      <Link to={`/posts/${post.id}`}>читать весь отзыв</Link>
+      <Link className="posts__morelink" to={`/posts/${post.id}`}>читать весь отзыв</Link>
       <ReactonButtons post={post} />
     </article>
   ));
