@@ -9,11 +9,6 @@ export const SinglePostPage = ({ match }) => {
 
   const post = useSelector((state) => selectPostById(state, parseInt(postId)));
 
-  const test = useSelector((state) =>
-    state.posts.posts.find((post) => post.id === parseInt(postId))
-  );
-  console.log(test);
-
   if (!post) {
     return (
       <section>

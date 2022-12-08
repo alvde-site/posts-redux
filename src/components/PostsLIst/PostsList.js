@@ -9,7 +9,6 @@ export const PostsList = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectAllPosts);
   const postStatus = useSelector((state) => state.posts.status);
-  console.log(postStatus)
 
   useEffect(() => {
     if(postStatus === "idle") {
