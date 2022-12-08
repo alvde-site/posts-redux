@@ -12,12 +12,12 @@ export const PostsList = () => {
 
   useEffect(() => {
     dispatch(fetchPosts());
-  });
+  }, [dispatch]);
 
   const renderedPosts = posts.map((post) => (
     <article className="posts__excerpt" key={post.id}>
-      <h3>{post.title}</h3>
-      <p className="posts__content">{post.content.substring(0, 100)}</p>
+      <h3>{post.nameRU}</h3>
+      <p className="posts__content">{post.description.substring(0, 100)}</p>
       <PostAuthor
         userId={post.user}
         timestamp={post.date}
