@@ -63,7 +63,8 @@ const postsSlice = createSlice({
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.posts = state.posts.concat(action.payload);
+        const formattedPost = action.payload.map(post => {return {...post, reactions: initialReactions}} )
+        state.posts = state.posts.concat(formattedPost);
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = "failed";
